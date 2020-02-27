@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import SignIn from './components/Signin';
 
 const App = () => {
   return (
     <>
-      <h1>Temp</h1>
+      <SignIn />
     </>
   )
 }
