@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Route, } from 'react-router-dom';
+import WelcomePage from './components/WelcomePage';
 
 const App = () => {
   return (
     <>
-      <h1>Temp</h1>
+      {/* TODO: Make this a route, remember wrap in browser router */}
+      <WelcomePage />
     </>
   )
 }
