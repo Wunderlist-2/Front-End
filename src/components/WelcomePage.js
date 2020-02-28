@@ -1,11 +1,19 @@
-import React from 'react';
-import SignIn from './Signin';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './index.css';
 
 const WelcomePage = () => {
     return (
-        <>
-            <SignIn />
-        </>
+        <div className="container-margin">
+            <h1>Welcome please log in or register if you havent allready</h1>
+            <Link to='/signin'>
+                <button type='submit'>Login</button>
+            </Link>
+            <Link to='/register'>
+                <button type='submit'>Register</button>
+            </Link>
+        </div>
     )
 }
 

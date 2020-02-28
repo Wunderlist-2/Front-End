@@ -1,0 +1,50 @@
+import React, { useEffect, useState } from 'react';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import './index.css';
+
+const LoginSignup = (props) => {
+
+    const back = () => {
+        props.history.push('/welcome')
+    }
+    const validationSchema = Yup.object().shape({
+        user_name: Yup.string()
+            .min(2, 'Too Short!')
+            .max(50, 'Too Long!')
+            .required('Required'),
+        password: Yup.string()
+            .min(2, 'Too Short!')
+            .max(50, 'Too Long!')
+            .required('Required'),
+    });
+    return (
+        <div className="container-margin">
+            <Formik
+                initialValues={{ user_name: "", password: "" }}
+                validationSchema={validationSchema}
+                onSubmit={(values, tools) => {
+                    console.log(values); // the object we need is in values
+                    tools.resetForm()
+                }}>
+                {({ errors, touched }) => (
+                    <Form>
+                        {errors.user_name && touched.user_name ? (
+                            <div>{errors.user_name}</div>
+                        ) : null}
+                        <Field type="text" name="user_name" placeholder="Username" />
+                        {errors.password && touched.password ? (
+                            <div>{errors.password}</div>
+                        ) : null}
+                        <Field type="password" name="password" placeholder="Password" />
+                        <button type="submit">Submit</button>
+                    </Form>
+
+                )}
+            </Formik>
+            <button type="submit" onClick={back}>Back</button>
+        </div>
+    )
+}
+
+export default LoginSignup;

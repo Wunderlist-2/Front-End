@@ -1,12 +1,15 @@
 import React from 'react';
-import { Route, } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import WelcomePage from './components/WelcomePage';
+import LoginSignup from './components/Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <>
-      {/* TODO: Make this a route, remember wrap in browser router */}
-      <WelcomePage />
+      <Route exact path="/welcome" component={WelcomePage} />
+      <Route exact path='/signin' render={props => <LoginSignup {...props} />} />
+      <Route exact path='/register' render={props => <LoginSignup {...props} />} />
     </>
   )
 }
