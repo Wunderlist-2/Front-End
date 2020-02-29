@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import './index.css';
 
 const LoginSignup = (props) => {
+
+    const [path, setPath] = useState(props.match.url);
 
     const back = () => {
         props.history.push('/welcome')
@@ -20,6 +22,8 @@ const LoginSignup = (props) => {
     });
     return (
         <div className="container-margin">
+            {path === '/signin' ? <h1>Sign in below</h1> : <h1>New user? Register below.</h1>
+            }
             <Formik
                 initialValues={{ user_name: "", password: "" }}
                 validationSchema={validationSchema}

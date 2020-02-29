@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './index.css';
 
-const WelcomePage = () => {
+const WelcomePage = (props) => {
     return (
         <div className="container-margin">
             <h1>Welcome please log in or register if you havent allready</h1>
@@ -13,6 +12,19 @@ const WelcomePage = () => {
             <Link to='/register'>
                 <button type='submit'>Register</button>
             </Link>
+
+            <p>Welcome these new users to the site:</p>
+            {props.peopleArr.map((person, i) => {
+                return (
+                    <>
+                        <ul key={i}>
+                            <li>{person.login.username}</li>
+                        </ul>
+
+                    </>
+                )
+            })
+            }
         </div>
     )
 }
