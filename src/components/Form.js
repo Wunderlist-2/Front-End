@@ -31,7 +31,9 @@ const LoginSignup = () => {
         initialValues={{ user_name: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, tools) => {
-          console.log(values) // the object we need is in values
+          // the object we need is in values
+          // need ternary to dispatch to correct api endpoint if using the same form
+          path === '/signin' ? console.log(values) : console.log(values)
           tools.resetForm()
         }}
       >
