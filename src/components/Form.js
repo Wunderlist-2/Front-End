@@ -37,13 +37,13 @@ const LoginSignup = () => {
       >
         {({ errors, touched }) => (
           <Form>
-            {errors.user_name && touched.user_name ? (
+            {errors.user_name && touched.user_name && (
               <div>{errors.user_name}</div>
-            ) : null}
+            )}
             <Field type='text' name='user_name' placeholder='Username' />
-            {errors.password && touched.password ? (
+            {errors.password && touched.password && (
               <div>{errors.password}</div>
-            ) : null}
+            )}
             <Field type='password' name='password' placeholder='Password' />
             <button type='submit'>Submit</button>
           </Form>
