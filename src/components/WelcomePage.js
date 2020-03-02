@@ -4,7 +4,7 @@ import './index.css'
 
 const WelcomePage = props => (
   <div className='container-margin'>
-    <h1>Welcome please log in or register if you havent allready</h1>
+    <h1>Welcome to Wunderlist 2</h1>
     <Link to='/signin'>
       <button type='submit'>Login</button>
     </Link>
