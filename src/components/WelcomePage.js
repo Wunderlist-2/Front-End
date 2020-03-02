@@ -6,10 +6,10 @@ const WelcomePage = props => (
   <div className='container-margin'>
     <h1>Welcome to Wunderlist 2</h1>
     <Link to='/signin'>
-      <button type='submit'>Login</button>
+      <button type='button'>Login</button>
     </Link>
     <Link to='/register'>
-      <button type='submit'>Register</button>
+      <button type='button'>Register</button>
     </Link>
 
     <p>Welcome these new users to the site:</p>
