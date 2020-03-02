@@ -18,7 +18,7 @@ const App = () => {
     <>
       <Route
         exact
-        path='/welcome'
+        path='/'
         render={() => <WelcomePage peopleArr={peopleArr} />}
       />
 
