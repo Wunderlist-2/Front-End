@@ -1,31 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
-import WelcomePage from './components/WelcomePage'
-import LoginSignup from './components/Form'
-import axios from 'axios'
+import React from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import "./styles.scss";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import TodoPage from './components/TodoPage';
 
 const App = () => {
-  //store dummy data into state
-  const [peopleArr, setPeople] = useState([])
-
-  //call from free api for dummy data
-  useEffect(() => {
-    axios
-      .get('https://randomuser.me/api/?results=4')
-      .then(res => setPeople(res.data.results))
-  }, [])
   return (
-    <>
-      <Route
-        exact
-        path='/'
-        render={() => <WelcomePage peopleArr={peopleArr} />}
-      />
-
-      <Route exact path='/signin' component={LoginSignup} />
-      <Route exact path='/register' component={LoginSignup} />
-    </>
-  )
+    <Router>
+      <div className="App">
+               
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path='/todo' component={TodoPage} />
+       </div>
+    </Router>
+  );
 }
 
 export default App
