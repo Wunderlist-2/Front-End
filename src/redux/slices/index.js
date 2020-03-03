@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const rootSlice = createSlice({
-  name: 'todos',
+  name: 'todoReducer',
   initialState: {
     isLoggedIn: false,
     todos: []
   },
   reducers: {
     changeLoggedIn(state, action) {
-      state.loggedIn = action.payload
+      state.isloggedIn = action.payload
     },
     setTodos(state, action) {
       state.todos = action.payload

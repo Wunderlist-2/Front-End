@@ -32,7 +32,7 @@ const TodoList = ({ todos }) => {
 
   const deleteTodos = todos => {
     axios
-      .delete(`https://wunderlist-v2.herokuapp.com/api/todos${todos.id}`)
+      .delete(`https://wunderlist-v2.herokuapp.com/api/todos${todos.id}`, todos)
       .then(res => setTodoEdit(initialTodos))
       .catch(err => console.log(err));
   };
@@ -46,7 +46,7 @@ const TodoList = ({ todos }) => {
        })
        .catch(err => console.log(err))
   }
-
+ 
   return (
     <div>
       <p>List</p>
