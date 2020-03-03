@@ -1,3 +1,120 @@
-.container-margin {
-    margin: 10%;
+@import url('https://fonts.googleapis.com/css?family=Akronim|Nanum+Pen+Script|Open+Sans+Condensed:300|Permanent+Marker&display=swap');
+
+@font-face {
+    font-family: 'Akronim';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Akronim Regular'), local('Akronim-Regular'), url(https://fonts.gstatic.com/s/akronim/v9/fdN-9sqWtWZZlHRpygd7lA.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nanum Pen Script';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Nanum Pen'), local('NanumPen'), url(https://fonts.gstatic.com/s/nanumpenscript/v15/daaDSSYiLGqEal3MvdA_FOL_3FkN6zn0bA.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local('Open Sans Condensed Light'), local('OpenSansCondensed-Light'), url(https://fonts.gstatic.com/s/opensanscondensed/v14/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuXMQg.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Permanent Marker';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Permanent Marker Regular'), local('PermanentMarker-Regular'), url(https://fonts.gstatic.com/s/permanentmarker/v9/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Ceg.ttf) format('truetype');
+}
+
+.mdisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.borderDashed {
+    border-bottom: 2px grey dashed;
+}
+
+.container {
+    margin: 0 5%;
+}
+
+.btn {
+    font-size: 0.75rem;
+    font-weight: light;
+    color: black;
+    font-family: 'Permanent Marker';
+    width: 75px;
+    border-radius: 10%;
+    background-color: #4169E1;
+    border: none;
+    cursor: pointer;
+    margin: 10% 10%
+}
+
+.btn:hover {
+    opacity: 0.5;
+}
+
+p {
+    text-decoration: underline;
+    margin-bottom: 2%;
+}
+
+li {
+    list-style: none;
+    margin: 5%;
+}
+
+input:focus {
+    transform: scale(1.2);
+}
+
+span {
+    color: red;
+}
+
+@media (min-width: 500px) {
+    .btn {
+        font-size: 1rem;
+        width: 100px;
+    }
+}
+
+@media (min-width: 800px) {
+    .btn {
+        font-size: 1.25rem;
+        width: 150px;
+    }
+}
+
+.btn:hover {
+    color: blue;
+    background-color: #00FF7F;
+
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 2%;
+    font-family: 'akronim';
+}
+
+.mainContent .vision .visionHead {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: black;
+    font-family: 'akronim';
+}
+
+.container {
+    margin-top: 5%;
+    text-align: center;
 }
