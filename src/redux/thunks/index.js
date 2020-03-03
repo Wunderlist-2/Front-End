@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-import { changeLoggedIn } from "../slices"
-import { setTodos } from "../slices"
+import { changeLoggedIn, setTodos } from "../slices"
 
 export const login = values => dispatch => {
   axios
@@ -28,7 +27,7 @@ export const getTodo = () => dispatch => {
     .catch(err => console.log(err))
 }
 
-export const updateTodo = {id, value} => dispatch => {
+export const updateTodo = (id, value) => dispatch => {
   axios
     .put(`https://wunderlist-v2.herokuapp.com/api/todos/${id}`, value)
     .then(res => {
