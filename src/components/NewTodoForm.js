@@ -1,6 +1,7 @@
 import React from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import './index.css'
 
 
 const NewTodoForm = () => {
@@ -9,25 +10,27 @@ const NewTodoForm = () => {
           .required('Enter your todo item')
       })
     return (
-        <>
+        <div className='form-container'>
+            <section>
         <Formik
         initialValues={{title: '', completed: false}}
         validationSchema={TodoValidation}
         onSubmit={(values, {resetForm}) => {
-          todos.push(values)
+          console.log(values)
           resetForm();
         }
 
         }
         >
             <Form>
-              <ErrorMessage name='title'/>
+              <ErrorMessage className='error' name='title'/>
               <Field type='text' name='title' placeholder='Enter a Todo Item'/>
-              <button type='submit'>Add Item</button>
+              <button className='btn' type='submit'>Add Item</button>
             </Form>
 
         </Formik>
-        </>
+        </section>
+        </div>
     )
 }
 

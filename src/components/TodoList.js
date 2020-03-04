@@ -11,7 +11,7 @@ const TodoList = () => {
     <div>
       <NewTodoForm/>
       
-        {todos.map(todo => {
+        {/* {todos.map(todo => {
           return (
             <>
               <div>{todo.title}</div>
@@ -20,7 +20,7 @@ const TodoList = () => {
               <button type='button'>Delete</button>
             </>
           )
-        })}
+        })} */}
     </div>
   )
 }

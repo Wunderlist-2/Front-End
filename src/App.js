@@ -14,7 +14,6 @@ const App = () => {
         <SignInRoute exact path='/' component={WelcomePage} />
         <SignInRoute exact path='/signin' component={Form} />
         <SignInRoute exact path='/register' component={Form} />
-        <PrivateRoute exact path='/home' component={TodoList} />
         <Route exact path='/todolist' render={props =><TodoList {...props}/>}/>
       </div>
     </Router>
