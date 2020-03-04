@@ -8,7 +8,7 @@ import { login, register } from '../redux/thunks'
 
 const LoginSignup = () => {
   const { path } = useRouteMatch()
-  const { goBack } = useHistory()
+  const { goBack, push } = useHistory()
   const dispatch = useDispatch()
 
   return (
@@ -27,6 +27,7 @@ const LoginSignup = () => {
             ? dispatch(login(values))
             : dispatch(register(values))
           resetForm()
+          push('/home')
         }}
       >
         <Form>
