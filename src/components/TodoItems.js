@@ -1,13 +1,23 @@
-import React from "react";
+import React from 'react'
 
-const TodoItems = ({todos}) => {
- 
+const TodoItems = ({ todo, editing, setEditing, setTodoEdit }) => {
+  const handleClick = () => {
+    setEditing(!editing)
+    setTodoEdit(todo)
+  }
   return (
-    <>
-      <h2>{todos.title}</h2>
-    </>
+    <div>
+      <h2>{todo.title}</h2>
+      <p>{todo.completed}</p>
+      <button type='button' onClick={handleClick}>
+        Edit
+      </button>
+      <span className='delete' onClick={() => console.log('delete', todo)}>
+        {' '}
+        X{' '}
+      </span>
+    </div>
   )
-
 }
 
-export default TodoItems;
+export default TodoItems

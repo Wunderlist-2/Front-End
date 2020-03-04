@@ -1,20 +1,24 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import "./styles.scss";
-import Login from "./components/Form";
-import TodoPage from './components/TodoPage';
+import { BrowserRouter as Router } from 'react-router-dom'
+import './styles.scss'
+import WelcomePage from './components/WelcomePage'
+import TodoList from './components/TodoList'
+import Form from './components/Form'
+import { PrivateRoute, SignInRoute } from './utils/authRoutes'
+import { Route } from 'react-router-dom'
 
 const App = () => {
   return (
     <Router>
-      <div className="App">
-               
-        <Route exact path="/" component={Login} />
-        <Route exact path='/todo' component={TodoPage} />
-       </div>
+      <div className='App'>
+        <SignInRoute exact path='/' component={WelcomePage} />
+        <SignInRoute exact path='/signin' component={Form} />
+        <SignInRoute exact path='/register' component={Form} />
+        <PrivateRoute exact path='/home' component={TodoList} />
+        <Route exact path='/todolist' render={props =><TodoList {...props}/>}/>
+      </div>
     </Router>
-  );
+  )
 }
 
 export default App

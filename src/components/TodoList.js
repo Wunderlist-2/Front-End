@@ -1,107 +1,47 @@
-import React, { useState } from "react";
-import axios from 'axios';
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { editTodo } from '../redux/thunks'
+import TodoItems from './TodoItems'
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
 
-const initialTodos = {
-  user_id: 1, 
-  title: "Take out trash", 
-  due_date: null, 
-  date_completed: null, 
-  completed: "false" 
-};
+const TodoList = () => {
+  const { todos } = useSelector(state => state)
+  const dispatch = useDispatch()
 
-const TodoList = ({ todos }) => {
-  const [editing, setEditing] = useState(false);
-  const [todoEdit, setTodoEdit] = useState(initialTodos);
-  const [newTodo, setNewTodo]  = useState(initialTodos);
+  const TodoValidation = Yup.object().shape({
+    title: Yup.string()
+      .required('Enter your todo item')
+  })
 
-  const editTodos = todo => {
-    setEditing(true);
-    setTodoEdit(todo);
-  };
-
-  const saveEdit = e => {
-    e.preventDefault();
-    axios
-      .put(`https://wunderlist-v2.herokuapp.com/api/todos/${todoEdit.id}`, todoEdit)
-      .then(res => {
-        setEditing(false)
-        setTodoEdit(initialTodos)
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const deleteTodos = todos => {
-    axios
-      .delete(`https://wunderlist-v2.herokuapp.com/api/todos${todos.id}`, todos)
-      .then(res => setTodoEdit(initialTodos))
-      .catch(err => console.log(err));
-  };
- 
-  const addTodos = e => {
-    e.preventDefault();
-    axios
-       .post(`https://wunderlist-v2.herokuapp.com/api/todos`, newTodo)
-       .then(res => {
-        setNewTodo(initialTodos);
-       })
-       .catch(err => console.log(err))
-  }
- 
   return (
     <div>
-      <p>List</p>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id} onClick={() => editTodos(todo)}>
-            <span>
-              <span className="delete" onClick={e => {
-                    e.preventDefault();
-                    deleteTodos(todo)
-                  }
-                }>
-                  x
-              </span>{" "}
-              {todo.id}
-            </span>
-            
-          </li>
-        ))}
-      </ul>      
-      {editing && (
-        <form onSubmit={saveEdit}>
-          <legend>edit Todos</legend>
-          <label>
-            Title:
-            <input
-              onChange={e =>
-                setTodoEdit({ ...todoEdit, title: e.target.value })
-              }
-              value={setTodoEdit.title}
-            />
-          </label>
-          <div className="button-row">
-            <button type="submit">save</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
-          </div>
-        </form>
-      )}
-      <form onSubmit={addTodos}>
-        <legend>add todo</legend>
-        <label>
-          Title:
-          <input
-            onChange={e =>
-              setNewTodo({ ...newTodo, title: e.target.value })
-            }
-            value={newTodo.title}
-          />
-        </label>
-        <div className="button-row">
-          <button type="submit">Add</button>
-        </div>
-      </form>
-    </div>
-  );
-};
+      <Formik
+        initialValues={{title: '', due_date: null, date_completed: null, completed: false}}
+        validationSchema={TodoValidation}
+        onSubmit={(values, {resetForm}) => {
+          todos.push(values)
+          resetForm();
+        }
 
-export default TodoList;
+        }
+        >
+            <Form>
+              <ErrorMessage name='title'/>
+              <Field type='text' name='title' placeholder='Enter a Todo Item'/>
+              <button type='submit'>Add Item</button>
+            </Form>
+
+        </Formik>
+        {todos.map(todo => {
+          return (
+            <>
+              <div>{todo.title}</div>
+            </>
+          )
+        })}
+    </div>
+  )
+}
+
+export default TodoList
