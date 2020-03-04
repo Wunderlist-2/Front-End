@@ -31,12 +31,8 @@ export const register = values => async dispatch => {
 export const editTodo = todo => async dispatch => {
   try {
     const { data } = await axiosWithBaseURL().put(`/todos/${todo.id}`, {
-      id: todo.id,
       title: todo.title,
       user_id: todo.user_id,
-      due_date: todo.due_date || null,
-      date_completed: todo.due_date || null,
-      completed: todo.completed,
     })
     dispatch(editTodoItem(data.todo))
     dispatch(setApiError(null))
