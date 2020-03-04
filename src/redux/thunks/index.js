@@ -1,55 +1,46 @@
-import axios from 'axios'
+import {
+  changeLoggedIn,
+  setTodos,
+  setRegisterSuccess,
+  editTodoItem,
+  setApiError,
+} from '../slices'
+import { axiosWithBaseURL } from '../../utils/axios'
 
-import { changeLoggedIn, setTodos } from "../slices"
-
-export const login = values => dispatch => {
-  axios
-   .post('https://wunderlist-v2.herokuapp.com/api/users/login', values)
-   .then(res => {
-     dispatch(changeLoggedIn(res.isLoggedIn))
-   })
-   .catch(err => console.log(err))
+export const login = values => async dispatch => {
+  try {
+    const { data } = await axiosWithBaseURL().post('/users/login', values)
+    dispatch(changeLoggedIn(data.isLoggedIn))
+    dispatch(setTodos(data.todos))
+  } catch (e) {
+    dispatch(setApiError(e))
+  }
 }
 
-export const register = values => dispatch => {
-  axios
-    .post('https://wunderlist-v2.herokuapp.com/api/users/register', values)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+export const register = values => async dispatch => {
+  try {
+    const { data } = await axiosWithBaseURL().post('/users/register', values)
+    dispatch(changeLoggedIn(data.isLoggedIn))
+    dispatch(setRegisterSuccess(data.user))
+    dispatch(setApiError(null))
+  } catch (e) {
+    dispatch(setApiError(e))
+  }
 }
 
-export const getTodo = () => dispatch => {
-  axios
-    .post('https://wunderlist-v2.herokuapp.com/api/todos')
-    .then(res => {
-      dispatch(setTodos(res.date))
+export const editTodo = todo => async dispatch => {
+  try {
+    const { data } = await axiosWithBaseURL().put(`/todos/${todo.id}`, {
+      id: todo.id,
+      title: todo.title,
+      user_id: todo.user_id,
+      due_date: todo.due_date || null,
+      date_completed: todo.due_date || null,
+      completed: todo.completed,
     })
-    .catch(err => console.log(err))
-}
-
-export const updateTodo = (id, value) => dispatch => {
-  axios
-    .put(`https://wunderlist-v2.herokuapp.com/api/todos/${id}`, value)
-    .then(res => {
-      setEditing(false)
-      setTodoEdit(initialTodos)
-    })
-    .catch((err) => console.log(err));
-}
-
-export const deleteTodo = id => dispatch => {
-  axios
-    .delete(`https://wunderlist-v2.herokuapp.com/api/todos${id}`)
-    .then(res => setTodoEdit(initialTodos))
-    .catch(err => console.log(err));
-}
-
-export const addTodo = newTodo => dispatch => {
-  e.preventDefault();
-  axios
-     .post(`https://wunderlist-v2.herokuapp.com/api/todos`, newTodo)
-     .then(res => {
-      setNewTodo(initialTodos);
-     })
-     .catch(err => console.log(err))
+    dispatch(editTodoItem(data.todo))
+    dispatch(setApiError(null))
+  } catch (e) {
+    dispatch(setApiError(e))
+  }
 }
