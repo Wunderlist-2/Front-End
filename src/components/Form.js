@@ -12,7 +12,8 @@ const LoginSignup = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className='container'>
+    <div className='form-container'>
+      <section>
       {path === '/signin' ? (
         <h1>Sign in below</h1>
       ) : (
@@ -31,19 +32,18 @@ const LoginSignup = () => {
         }}
       >
         <Form>
-          <ErrorMessage name='username' />
+          <ErrorMessage className='error' name='username' />
           <Field type='text' name='username' placeholder='Username' />
-          <ErrorMessage name='password' />
+          <ErrorMessage className='error' name='password' />
           <Field type='password' name='password' placeholder='Password' />
-          <button className='btn' type='submit'>
-            Submit
-          </button>
+          <div className='btn-div'>
+          <button className='btn' type='submit'>Submit</button>
+          <button className='btn' type='button' onClick={() => goBack()}>Back</button>
+          </div>
         </Form>
       </Formik>
 
-      <button className='btn' type='button' onClick={() => goBack()}>
-        Back
-      </button>
+      </section>
     </div>
   )
 }
