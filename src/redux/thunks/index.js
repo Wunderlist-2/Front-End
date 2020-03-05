@@ -34,7 +34,7 @@ export const editTodo = todo => async dispatch => {
       title: todo.title,
       user_id: todo.user_id,
     })
-    dispatch(editTodoItem(data.todo))
+    dispatch(setTodos(data.updatedList))
     dispatch(setApiError(null))
   } catch (e) {
     dispatch(setApiError(e))
