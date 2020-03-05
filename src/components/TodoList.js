@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { editTodo } from '../redux/thunks'
 import NewTodoForm from './NewTodoForm'
@@ -8,19 +8,19 @@ const TodoList = () => {
   const dispatch = useDispatch()
 
   return (
-    <div>
-      <NewTodoForm/>
-      
-        {/* {todos.map(todo => {
-          return (
-            <>
-              <div>{todo.title}</div>
-              <p>{todo.completed}</p>
-              <button type='button'>Edit</button>
-              <button type='button'>Delete</button>
-            </>
-          )
-        })} */}
+    <div className='form-container'>
+      <NewTodoForm />
+
+      {todos.map(todo => {
+        return (
+          <>
+            <div>{todo.title}</div>
+            <p>{todo.completed}</p>
+            <button type='button'>Edit</button>
+            <button type='button'>Delete</button>
+          </>
+        )
+      })}
     </div>
   )
 }
