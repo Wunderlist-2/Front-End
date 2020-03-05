@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
 
-
 const WelcomePage = () => (
   <div className='container'>
     <h1>Welcome to Wunderlist 2</h1>

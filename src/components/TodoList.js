@@ -9,18 +9,18 @@ const TodoList = () => {
 
   return (
     <div className='form-container'>
-      <NewTodoForm/>
-      
-        {todos.map(todo => {
-          return (
-            <>
-              <div>{todo.title}</div>
-              <p>{todo.completed}</p>
-              <button type='button'>Edit</button>
-              <button type='button'>Delete</button>
-            </>
-          )
-        })}
+      <NewTodoForm />
+
+      {todos.map(todo => {
+        return (
+          <>
+            <div>{todo.title}</div>
+            <p>{todo.completed}</p>
+            <button type='button'>Edit</button>
+            <button type='button'>Delete</button>
+          </>
+        )
+      })}
     </div>
   )
 }
