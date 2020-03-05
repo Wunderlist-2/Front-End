@@ -10,8 +10,9 @@ const NewTodoForm = () => {
           .required('Enter your todo item')
       })
     return (
-        <div className='form-container'>
+        <div>
             <section>
+              <h1 className='todo-header'>Add a todo item</h1>
         <Formik
         initialValues={{title: '', completed: false}}
         validationSchema={TodoValidation}
@@ -25,7 +26,7 @@ const NewTodoForm = () => {
             <Form>
               <ErrorMessage className='error' name='title'/>
               <Field type='text' name='title' placeholder='Enter a Todo Item'/>
-              <button className='btn' type='submit'>Add Item</button>
+              <button className='btn-add' type='submit'>Add Item</button>
             </Form>
 
         </Formik>

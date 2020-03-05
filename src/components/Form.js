@@ -36,12 +36,10 @@ const LoginSignup = () => {
           <Field type='text' name='username' placeholder='Username' />
           <ErrorMessage className='error' name='password' />
           <Field type='password' name='password' placeholder='Password' />
-          <button className='btn' type='submit'>
-            Submit
-          </button>
-      <button className='btn' type='button' onClick={() => goBack()}>
-        Back
-      </button>
+          <div className='btn-div'>
+          <button className='btn' type='submit'>Submit</button>
+          <button className='btn' type='button' onClick={() => goBack()}>Back</button>
+          </div>
         </Form>
       </Formik>
 
