@@ -6,12 +6,33 @@ import NewTodoForm from './NewTodoForm'
 const TodoList = () => {
   const { todos } = useSelector(state => state)
   const dispatch = useDispatch()
+   
+  const [searchTerm, setSearchTerm] = useState("");  
+  const [searchResults, setSearchResults] = useState([]);
 
+  useEffect(() => {
+    const results = todos.filter(todo =>
+      toto.title.toLowerCase().includes(searchTerm.toLowerCase())
+     );
+     setSearchResults(results);
+   }, [searchTerm]);
+
+   const handleChange = e => {
+    setSearchTerm(e.target.value);
+  };
+
+      
   return (
     <div className='form-container'>
       <NewTodoForm />
+       
+      <form>
+        <input className="searchForm"
+          id="name" type="text" name="textfield" placeholder="Search"
+          value={searchTerm} onChange={handleChange}/>
+      </form>
 
-      {todos.map(todo => {
+      {searchResults.map(todo => {
         return (
           <>
             <div>{todo.title}</div>
