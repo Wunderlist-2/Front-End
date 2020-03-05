@@ -1,53 +1,17 @@
-// import React from 'react'
-// import { Route } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
-// import WelcomePage from '../../components/WelcomePage'
-// import TodoList from '../../components/TodoList'
-
-// export const PrivateRoute = ({ component, ...rest }) => {
-//   const { isLoggedIn } = useSelector(state => state)
-//   const finalComponent = isLoggedIn ? component : WelcomePage
-//   return <Route {...rest} component={finalComponent} />
-// }
-
-// export const SignInRoute = ({ component, ...rest }) => {
-//   const { isLoggedIn } = useSelector(state => state)
-//   const finalComponent = isLoggedIn ? TodoList : component
-//   return <Route {...rest} component={finalComponent} />
-// }
-
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import WelcomePage from '../../components/WelcomePage'
+import TodoList from '../../components/TodoList'
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
+export const PrivateRoute = ({ component, ...rest }) => {
   const { isLoggedIn } = useSelector(state => state)
-  return (
-    <Route
-      {...rest}
-      render={() => {
-        if (isLoggedIn) {
-          return <Component />
-        } else {
-          return <Redirect to='/' />
-        }
-      }}
-    />
-  )
+  const finalComponent = isLoggedIn ? component : WelcomePage
+  return <Route {...rest} component={finalComponent} />
 }
 
-export const SignInRoute = ({ component: Component, ...rest }) => {
+export const SignInRoute = ({ component, ...rest }) => {
   const { isLoggedIn } = useSelector(state => state)
-  return (
-    <Route
-      {...rest}
-      render={() => {
-        if (isLoggedIn) {
-          return <Redirect to='/home' />
-        } else {
-          return <Component />
-        }
-      }}
-    />
-  )
+  const finalComponent = isLoggedIn ? TodoList : component
+  return <Route {...rest} component={finalComponent} />
 }

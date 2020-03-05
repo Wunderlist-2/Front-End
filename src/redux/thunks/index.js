@@ -2,7 +2,6 @@ import {
   changeLoggedIn,
   setTodos,
   setRegisterSuccess,
-  editTodoItem,
   setApiError,
 } from '../slices'
 import { axiosWithBaseURL } from '../../utils/axios'
@@ -34,7 +33,7 @@ export const editTodo = todo => async dispatch => {
       title: todo.title,
       user_id: todo.user_id,
     })
-    dispatch(setTodos(data.updatedList))
+    dispatch(setTodos(data.updated_list))
     dispatch(setApiError(null))
   } catch (e) {
     dispatch(setApiError(e))
