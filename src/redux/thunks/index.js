@@ -3,6 +3,8 @@ import {
   setTodos,
   setRegisterSuccess,
   setApiError,
+  editTodoItem,
+  deleteTodoItem
 } from '../slices'
 import { axiosWithBaseURL } from '../../utils/axios'
 
@@ -34,6 +36,26 @@ export const editTodo = todo => async dispatch => {
       user_id: todo.user_id,
     })
     dispatch(setTodos(data.updated_list))
+    dispatch(setApiError(null))
+  } catch (e) {
+    dispatch(setApiError(e))
+  }
+}
+
+export const deleteTodo = todo => async dispatch => {
+  try {
+    const { data } = await axiosWithBaseURL().delete(`/api/todos/${todo.id}`) 
+    dispatch(deleteTodoItem(data.todo))
+    dispatch(setApiError(null))
+  } catch (e) {
+    dispatch(setApiError(e))
+  }
+}
+
+export const addTodo = newTodo => async dispatch => {
+  try {
+    const { data } = await axiosWithBaseURL().post(`/api/todos`, newTodo) 
+    dispatch(setTodos(data.todo));
     dispatch(setApiError(null))
   } catch (e) {
     dispatch(setApiError(e))
