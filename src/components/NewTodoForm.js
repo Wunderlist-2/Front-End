@@ -19,6 +19,7 @@ const NewTodoForm = () => {
           validationSchema={TodoValidation}
           onSubmit={(values, { resetForm }) => {
             console.log(values)
+            dispatch(addTodo(values))
             resetForm()
           }}
         >
@@ -36,3 +37,6 @@ const NewTodoForm = () => {
 }
 
 export default NewTodoForm
+
+
+
