@@ -21,7 +21,6 @@ export const login = values => async dispatch => {
 export const register = values => async dispatch => {
   try {
     const { data } = await axiosWithBaseURL().post('/users/register', values)
-    dispatch(changeLoggedIn(data.isLoggedIn))
     dispatch(setUserId(data.id))
     dispatch(setRegisterSuccess(data.username))
     dispatch(setApiError(null))
