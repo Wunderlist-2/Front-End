@@ -41,8 +41,10 @@ const TodoList = () => {
           <>
             <div>{todo.title}</div>
             <p>{todo.completed}</p>
-            <button type='button'>Edit</button>
-            <button type='button'>Delete</button>
+            <div className='btn-container'>
+            <button type='button' className='btn-edit'>Edit</button>
+            <button type='button' className='btn-delete'>Delete</button>
+            </div>
           </>
         )
       })}

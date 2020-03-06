@@ -42,7 +42,9 @@
 
 .btn,
 .welcome-btn,
-.btn-add {
+.btn-add,
+.btn-edit, 
+.btn-delete {
   font-size: 0.75rem;
   font-weight: light;
   color: black;
@@ -56,7 +58,9 @@
   width: 82px;
 }
 
-.btn-add {
+.btn-add,
+.btn-edit, 
+.btn-delete {
   margin: 1%;
 }
 
