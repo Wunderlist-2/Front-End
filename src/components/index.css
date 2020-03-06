@@ -42,7 +42,9 @@
 
 .btn,
 .welcome-btn,
-.btn-add {
+.btn-add,
+.btn-edit, 
+.btn-delete {
   font-size: 0.75rem;
   font-weight: light;
   color: black;
@@ -56,7 +58,9 @@
   width: 82px;
 }
 
-.btn-add {
+.btn-add,
+.btn-edit, 
+.btn-delete {
   margin: 1%;
 }
 
@@ -117,4 +121,13 @@ input[type='password'] {
 input[type='text'] {
   margin-bottom: 2%;
   margin-top: 2%;
+}
+
+.completed-label, li{
+    margin: 5% 0;
+    font-size: 1rem;
+}
+
+.peopleArray{
+    margin: 10% 10% ;
 }

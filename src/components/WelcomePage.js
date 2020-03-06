@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import MockPeopleData from './MockPeopleData'
 import './index.css'
+
 
 const WelcomePage = () => (
   <div className='container'>
@@ -15,6 +17,7 @@ const WelcomePage = () => (
         Register
       </button>
     </Link>
+    <MockPeopleData/>
   </div>
 )
 
