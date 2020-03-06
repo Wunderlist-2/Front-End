@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { editTodo, deleteTodo } from '../redux/thunks'
+import { deleteTodo } from '../redux/thunks'
 import NewTodoForm from './NewTodoForm'
 import EditTodoForm from '../components/EditForm'
 
-const TodoList = ({ id }) => {
+const TodoList = () => {
   const { todos } = useSelector(state => state)
   const dispatch = useDispatch()
 
-  const [editing, setEditing] = useState(false)
+  const [editing, setEditing] = useState({ isEditing: false, id: null })
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
 
@@ -23,7 +23,7 @@ const TodoList = ({ id }) => {
     setSearchTerm(e.target.value)
   }
   const handleDelete = id => {
-    dispatch(deleteTodo(todos.id))
+    dispatch(deleteTodo(id))
   }
 
   return (
@@ -43,32 +43,46 @@ const TodoList = ({ id }) => {
       </form>
       {searchResults.map(todo => {
         return (
-          <div className='todo-container'>
-            <div>
-              <label className='date-to-complete'>
-                Date to be completed:<input type='date'></input>
-              </label>
+          <>
+            <div key={todo.id} className='todo-container'>
+              <div className='todo-item'>
+                <div>{todo.title}</div>
+                <label className='date-to-complete'>
+                  Date to be completed:<input type='date'></input>
+                </label>
+                <div>
+                  <label className='completed-label'>
+                    Completed<input type='checkbox'></input>
+                  </label>
+                </div>
+                <div className='btn-container'>
+                  <button
+                    type='button'
+                    className='btn-edit'
+                    onClick={() =>
+                      setEditing({
+                        ...editing,
+                        isEditing: !editing.isEditing,
+                        id: todo.id,
+                      })
+                    }
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type='button'
+                    className='btn-delete'
+                    onClick={() => handleDelete(todo.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
-            <label className='completed-label'>
-              Completed<input type='checkbox'></input>
-            </label>
-            <div className='btn-container'>
-              <button
-                type='button'
-                className='btn-edit'
-                onClick={() => editing && <EditTodoForm id={id} />}
-              >
-                Edit
-              </button>
-              <button
-                type='button'
-                className='btn-delete'
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+            {editing.isEditing && editing.id === todo.id && (
+              <EditTodoForm todo={todo} />
+            )}
+          </>
         )
       })}
     </div>

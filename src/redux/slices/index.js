@@ -4,6 +4,7 @@ export const rootSlice = createSlice({
   name: 'todoReducer',
   initialState: {
     isLoggedIn: false,
+    user_id: null,
     apiError: null,
     registerSuccess: null,
     todos: [],
@@ -21,17 +22,10 @@ export const rootSlice = createSlice({
     setRegisterSuccess(state, action) {
       state.registerSuccess = action.payload
     },
-    editTodoItem(state, action) {
-      state.todos.find(
-        todo => todo.id === action.payload.id && (todo = action.payload)
-      )
+    setUserId(state, action) {
+      state.user_id = action.payload
     },
-    deleteTodoItem(state, action) {
-      state.todos.filter(
-        todo => todo.id !== action.payload.id
-      )
-    },
-  }
+  },
 })
 
 export const {
@@ -39,8 +33,7 @@ export const {
   setTodos,
   setApiError,
   setRegisterSuccess,
-  editTodoItem,
-  deleteTodoItem
+  setUserId,
 } = rootSlice.actions
 
 export default rootSlice.reducer
