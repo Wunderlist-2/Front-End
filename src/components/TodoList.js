@@ -38,14 +38,16 @@ const TodoList = () => {
       </form>
       {searchResults.map(todo => {
         return (
-          <>
+          <div className='todo-container'>
+          <div className='todo-item'>
             <div>{todo.title}</div>
             <label className='completed-label'>Completed<input type='checkbox'></input></label>
             <div className='btn-container'>
             <button type='button' className='btn-edit'>Edit</button>
             <button type='button' className='btn-delete'>Delete</button>
             </div>
-          </>
+          </div>
+          </div>
         )
       })}
     </div>
