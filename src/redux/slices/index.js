@@ -26,7 +26,12 @@ export const rootSlice = createSlice({
         todo => todo.id === action.payload.id && (todo = action.payload)
       )
     },
-  },
+    deleteTodoItem(state, action) {
+      state.todos.filter(
+        todo => todo.id !== action.payload.id
+      )
+    },
+  }
 })
 
 export const {
@@ -35,6 +40,7 @@ export const {
   setApiError,
   setRegisterSuccess,
   editTodoItem,
+  deleteTodoItem
 } = rootSlice.actions
 
 export default rootSlice.reducer

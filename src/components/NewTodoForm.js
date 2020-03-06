@@ -2,8 +2,11 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import './index.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo } from '../redux/thunks';
 
 const NewTodoForm = () => {
+  const dispatch = useDispatch();
   const TodoValidation = Yup.object().shape({
     title: Yup.string().required('Enter your todo item'),
   })
@@ -16,6 +19,7 @@ const NewTodoForm = () => {
           validationSchema={TodoValidation}
           onSubmit={(values, { resetForm }) => {
             console.log(values)
+            dispatch(addTodo(values))
             resetForm()
           }}
         >
@@ -33,3 +37,6 @@ const NewTodoForm = () => {
 }
 
 export default NewTodoForm
+
+
+
