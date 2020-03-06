@@ -1,12 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import './index.css'
-import { useSelector, useDispatch } from 'react-redux';
-import { editTodo } from '../redux/thunks';
+import { useDispatch } from 'react-redux'
+import { editTodo } from '../redux/thunks'
 
 const EditTodoForm = ({ id }) => {
   const dispatch = useDispatch();
-
   return (
     <div className='container'>
       <section>

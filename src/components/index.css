@@ -42,7 +42,9 @@
 
 .btn,
 .welcome-btn,
-.btn-add {
+.btn-add,
+.btn-edit, 
+.btn-delete {
   font-size: 0.75rem;
   font-weight: light;
   color: black;
@@ -56,7 +58,9 @@
   width: 82px;
 }
 
-.btn-add {
+.btn-add,
+.btn-edit, 
+.btn-delete {
   margin: 1%;
 }
 
@@ -117,4 +121,22 @@ input[type='password'] {
 input[type='text'] {
   margin-bottom: 2%;
   margin-top: 2%;
+}
+
+.completed-label, .date-to-complete, li{
+    margin: 2% 0;
+    font-size: 1rem;
+}
+
+.peopleArray{
+    margin: 10% 10% ;
+}
+.todo-container{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+}
+.todo-item {
+    border: 1px groove;
+    padding: 10px;
 }
