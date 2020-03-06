@@ -122,3 +122,12 @@ input[type='text'] {
   margin-bottom: 2%;
   margin-top: 2%;
 }
+
+.completed-label, li{
+    margin: 5% 0;
+    font-size: 1rem;
+}
+
+.peopleArray{
+    margin: 10% 10% ;
+}

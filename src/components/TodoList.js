@@ -40,7 +40,7 @@ const TodoList = () => {
         return (
           <>
             <div>{todo.title}</div>
-            <p>{todo.completed}</p>
+            <label className='completed-label'>Completed<input type='checkbox'></input></label>
             <div className='btn-container'>
             <button type='button' className='btn-edit'>Edit</button>
             <button type='button' className='btn-delete'>Delete</button>
