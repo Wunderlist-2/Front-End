@@ -41,6 +41,7 @@ const TodoList = () => {
           <div className='todo-container'>
           <div className='todo-item'>
             <div>{todo.title}</div>
+            <div><label className='date-to-complete'>Date to be completed:<input type='date'></input></label></div>
             <label className='completed-label'>Completed<input type='checkbox'></input></label>
             <div className='btn-container'>
             <button type='button' className='btn-edit'>Edit</button>
