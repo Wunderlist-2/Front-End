@@ -43,7 +43,7 @@
 .btn,
 .welcome-btn,
 .btn-add,
-.btn-edit, 
+.btn-edit,
 .btn-delete {
   font-size: 0.75rem;
   font-weight: light;
@@ -59,7 +59,7 @@
 }
 
 .btn-add,
-.btn-edit, 
+.btn-edit,
 .btn-delete {
   margin: 1%;
 }
@@ -93,7 +93,6 @@ h1 {
 
 .container,
 form {
-  margin-top: 5%;
   text-align: center;
   width: 100%;
 }
@@ -116,27 +115,29 @@ form {
   display: flex;
 }
 input[type='password'] {
-  margin-top: 2%;
+  margin-top: 5px;
 }
 input[type='text'] {
-  margin-bottom: 2%;
-  margin-top: 2%;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
-.completed-label, .date-to-complete, li{
-    margin: 2% 0;
-    font-size: 1rem;
+.completed-label,
+.date-to-complete,
+li {
+  margin: 2% 0;
+  font-size: 1rem;
 }
 
-.peopleArray{
-    margin: 10% 10% ;
+.peopleArray {
+  margin: 2%;
 }
-.todo-container{
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 20px 0;
+.todo-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 10px 0;
 }
 .todo-item {
-    border: 1px groove;
-    padding: 10px;
+  border: 1px groove;
+  padding: 10px;
 }

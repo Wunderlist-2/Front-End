@@ -4,25 +4,26 @@ import './index.css'
 import { useDispatch } from 'react-redux'
 import { editTodo } from '../redux/thunks'
 
-const EditTodoForm = ({ id }) => {
-  const dispatch = useDispatch();
+const EditTodoForm = ({ todo, setEditing }) => {
+  const dispatch = useDispatch()
+  console.log(setEditing)
   return (
     <div className='container'>
-      <section>
-        <Formik
-          initialValues={{ title: '', completed: false }}
-          onSubmit={(values, { resetForm }) => {
-            console.log(values)
-            dispatch(editTodo(values, id))
-            resetForm()
-          }}
-        >
-          <Form>
-            <Field type='text' name='title' placeholder='Enter a Todo Item' />
-            <button type='button'>Edit Item</button>
-          </Form>
-        </Formik>
-      </section>
+      <Formik
+        initialValues={{ title: todo.title }}
+        onSubmit={({ title }) => {
+          dispatch(editTodo({ ...todo, title }))
+          setEditing({
+            isEditing: false,
+            id: null,
+          })
+        }}
+      >
+        <Form>
+          <Field type='text' name='title' placeholder='Enter a Todo Item' />
+          <button type='submit'>Edit Item</button>
+        </Form>
+      </Formik>
     </div>
   )
 }
