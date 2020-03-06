@@ -36,7 +36,6 @@ const TodoList = () => {
           onChange={handleChange}
         />
       </form>
-
       {searchResults.map(todo => {
         return (
           <>
