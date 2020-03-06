@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { editTodo } from '../redux/thunks'
+import { editTodo, deleteTodo } from '../redux/thunks'
 import NewTodoForm from './NewTodoForm'
 
 const TodoList = () => {
@@ -20,8 +20,11 @@ const TodoList = () => {
    const handleChange = e => {
     setSearchTerm(e.target.value);
   };
+  
+  const handleDelete = id => {
+    dispatch(deleteTodo(todos.id));
+  };
 
-      
   return (
     <div className='form-container'>
       <NewTodoForm />
@@ -37,8 +40,8 @@ const TodoList = () => {
           <>
             <div>{todo.title}</div>
             <p>{todo.completed}</p>
-            <button type='button'>Edit</button>
-            <button type='button'>Delete</button>
+            <button type='button' >Edit</button>
+            <button type='button' onClick = {handleDelete}>Delete</button>
           </>
         )
       })}
