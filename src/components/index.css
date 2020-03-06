@@ -124,10 +124,19 @@ input[type='text'] {
 }
 
 .completed-label, li{
-    margin: 5% 0;
+    margin: 2% 0;
     font-size: 1rem;
 }
 
 .peopleArray{
     margin: 10% 10% ;
+}
+.todo-container{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+}
+.todo-item {
+    border: 1px groove;
+    padding: 10px;
 }
