@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { editTodo, deleteTodo } from '../redux/thunks'
 import NewTodoForm from './NewTodoForm'
+import EditTodoForm from '../components/EditForm';
 
-const TodoList = () => {
+const TodoList = ({ id }) => {
   const { todos } = useSelector(state => state)
   const dispatch = useDispatch()
-   
+  
+  const [editing, setEditing] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");  
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const results = todos.filter(todo =>
-      toto.title.toLowerCase().includes(searchTerm.toLowerCase())
-     );
+    const results = todos.filter(todo => (
+      todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+    ))
      setSearchResults(results);
    }, [searchTerm]);
 
@@ -40,8 +42,9 @@ const TodoList = () => {
           <>
             <div>{todo.title}</div>
             <p>{todo.completed}</p>
-            <button type='button' >Edit</button>
-            <button type='button' onClick = {handleDelete}>Delete</button>
+            <button type='button' onClick = {()=> (
+              editing && <EditTodoForm id={id}/> )} >Edit</button>
+            <button type='button' onClick={handleDelete}>Delete</button>
           </>
         )
       })}

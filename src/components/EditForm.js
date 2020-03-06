@@ -4,9 +4,9 @@ import './index.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { editTodo } from '../redux/thunks';
 
-const EditTodoForm = () => {
-  const dispatch = useDispatch()
-  const 
+const EditTodoForm = ({ id }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className='container'>
       <section>
@@ -14,7 +14,7 @@ const EditTodoForm = () => {
           initialValues={{ title: '', completed: false }}
           onSubmit={(values, { resetForm }) => {
             console.log(values)
-            dispatch(editTodo(values))
+            dispatch(editTodo(values, id))
             resetForm()
           }}
         >
