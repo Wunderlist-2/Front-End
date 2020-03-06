@@ -13,25 +13,23 @@ const NewTodoForm = () => {
   })
   return (
     <div>
-      <section>
-        <h1 className='todo-header'>Add a todo item</h1>
-        <Formik
-          initialValues={{ title: '' }}
-          validationSchema={TodoValidation}
-          onSubmit={(values, { resetForm }) => {
-            dispatch(addTodo(values, user_id))
-            resetForm()
-          }}
-        >
-          <Form>
-            <ErrorMessage className='error' name='title' />
-            <Field type='text' name='title' placeholder='Enter a Todo Item' />
-            <button className='btn-add' type='submit'>
-              Add Item
-            </button>
-          </Form>
-        </Formik>
-      </section>
+      <h1 className='todo-header'>Add a todo item</h1>
+      <Formik
+        initialValues={{ title: '' }}
+        validationSchema={TodoValidation}
+        onSubmit={({ title }, { resetForm }) => {
+          dispatch(addTodo(title, user_id))
+          resetForm()
+        }}
+      >
+        <Form>
+          <ErrorMessage className='error' name='title' />
+          <Field type='text' name='title' placeholder='Enter a Todo Item' />
+          <button className='btn-add' type='submit'>
+            Add Item
+          </button>
+        </Form>
+      </Formik>
     </div>
   )
 }

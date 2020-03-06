@@ -30,12 +30,9 @@ export const register = values => async dispatch => {
   }
 }
 
-export const editTodo = ({ id, title, user_id }) => async dispatch => {
+export const editTodo = todo => async dispatch => {
   try {
-    const { data } = await axiosWithBaseURL().put(`/todos/${id}`, {
-      title: title,
-      user_id: user_id,
-    })
+    const { data } = await axiosWithBaseURL().put(`/todos/${todo.id}`, todo)
     dispatch(setTodos(data.updated_list))
     dispatch(setApiError(null))
   } catch (e) {
